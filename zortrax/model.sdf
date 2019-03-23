@@ -1,0 +1,250 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  
+  <model name="Manipulador">
+    <static>true</static>
+
+<!--===================== LINKS =====================-->
+    <!-- Support - 1 parte -->
+    <link name="Support">
+      <inertial>
+        <mass>1000</mass>
+      </inertial>
+      <collision name="SupCollision">
+        <pose>0 0 0.54 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Support/Support.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name="SupVsual">
+        <pose>0 0 0.54 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Support/Support.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="RingCollision">
+        <pose>0.00014 -0.002 1.13 0 0 -0.004</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Support/Ring.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+
+      <visual name="RingVisual">
+        <pose>0.00014 -0.002 1.13 0 0 -0.004</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Support/Ring.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <!-- Base - 2 parte -->
+    <link name="Base">
+      <collision name="TRingCollision">
+        <pose>0 0 1.13 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Base/ToothedRing.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="TRingVisual">
+        <pose>0 0 1.13 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Base/ToothedRing.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="baseCollision">
+        <pose>0 0  1.80 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Base/Base.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="baseVisual">
+        <pose>0 0  1.80 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Base/Base.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="coverLCollision">
+        <pose>0.117 -0.565 2.015 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Base/coverBaseL.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="coverLVisual">
+        <pose>0.117 -0.565 2.015 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Base/coverBaseL.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="coverRCollision">
+        <pose>0.117 0.535 2.015 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Base/coverBaseR.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="coverRVisual">
+        <pose>0.117 0.535 2.015 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Base/coverBaseR.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <!-- Lower Arm - 3 parte -->
+    <link name="LowerArm">
+      <pose>0.117 -0.015 2.15 0 0 0</pose>
+      <collision name="Arm1Collision">
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/LowerArm/Arm1Lower.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="Arm1Visual">
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/LowerArm/Arm1Lower.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="pinoCollision">
+        <pose>0.005 0 -0.135 1.5708 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.8</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="pinoVisual">
+        <pose>0.005 0 -0.135 1.5708 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.8</length>
+          </cylinder>
+        </geometry>
+      </visual>
+
+      <collision name="Arm1UpperCollision">
+        <pose>-0.002 0.0216 1.15 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/LowerArm/Arm1Upper.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="Arm1UpperVisual">
+        <pose>-0.002 0.0216 1.15 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/LowerArm/Arm1Upper.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    
+    <!-- Upper Arm - 4 parte -->
+    <link name="UpperArm">
+      <pose>0.22 0.001 3.63 0 0 0</pose>
+      <visual name="Arm2Visual">
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/UpperArm/Arm2.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <visual name="pino2Visual">
+        <pose>-0.103 0 -0.035 1.5708 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.7</length>
+          </cylinder>
+        </geometry>
+      </visual>
+
+      <visual name="Arm3Visual">
+        <pose>1.1855 0.015 0.125 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/UpperArm/Arm3.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <!-- GrasperHolder - 5 parte -->
+    <link name="GrasperHolder">
+      <pose>1.943 0 3.675 0 0 0</pose>
+      <visual name="GrasperHolderVisual">
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/GrasperHolder/GrasperHolder.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+    <!-- Grasper - 6 parte -->
+    <link name="Grasper">
+      <pose>1.943 -0.0088 3.2 0 0 0</pose>
+      <visual name="GrasperBodyVisual">
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Grasper/GrasperBody.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <visual name="Grasper1Visual">
+        <pose>-0.1163 0 -0.485 1.5708 -1.5708 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Grasper/Grasper1.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <visual name="Grasper2Visual">
+        <pose>0.1163 0 -0.485 -1.5708 -1.5708 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Grasper/Grasper2.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+
+  </model>
+</sdf>
