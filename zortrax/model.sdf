@@ -2,7 +2,7 @@
 <sdf version="1.4">
   
   <model name="Manipulador">
-    <static>true</static>
+    <static>false</static>
 
 <!--===================== LINKS =====================-->
     <!-- Support - 1 parte -->
@@ -176,6 +176,13 @@
     <!-- Upper Arm - 4 parte -->
     <link name="UpperArm">
       <pose>0.22 0.001 3.63 0 0 0</pose>
+      <collision name="Arm2Visual">
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/UpperArm/Arm2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
       <visual name="Arm2Visual">
         <geometry>
           <mesh>
@@ -184,6 +191,15 @@
         </geometry>
       </visual>
 
+      <collision name="pino2Visual">
+        <pose>-0.103 0 -0.035 1.5708 1.5708 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.7</length>
+          </cylinder>
+        </geometry>
+      </collision>
       <visual name="pino2Visual">
         <pose>-0.103 0 -0.035 1.5708 1.5708 0</pose>
         <geometry>
@@ -194,6 +210,31 @@
         </geometry>
       </visual>
 
+      <collision name="Arm1GearVisual">
+        <pose>0 0 0 0 1.5708 -1.5708</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/UpperArm/Arm1Gear.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="Arm1GearVisual">
+        <pose>0 0 0 0 1.5708 -1.5708</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/UpperArm/Arm1Gear.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+
+      <collision name="Arm3Visual">
+        <pose>1.1855 0.015 0.125 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/UpperArm/Arm3.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
       <visual name="Arm3Visual">
         <pose>1.1855 0.015 0.125 0 0 0</pose>
         <geometry>
@@ -207,6 +248,13 @@
     <!-- GrasperHolder - 5 parte -->
     <link name="GrasperHolder">
       <pose>1.943 0 3.675 0 0 0</pose>
+      <collision name="GrasperHolderVisual">
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/GrasperHolder/GrasperHolder.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
       <visual name="GrasperHolderVisual">
         <geometry>
           <mesh>
@@ -219,6 +267,13 @@
     <!-- Grasper - 6 parte -->
     <link name="Grasper">
       <pose>1.943 -0.0088 3.2 0 0 0</pose>
+      <collision name="GrasperBodyVisual">
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Grasper/GrasperBody.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
       <visual name="GrasperBodyVisual">
         <geometry>
           <mesh>
@@ -227,6 +282,14 @@
         </geometry>
       </visual>
 
+      <collision name="Grasper1Visual">
+        <pose>-0.1163 0 -0.485 1.5708 -1.5708 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Grasper/Grasper1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
       <visual name="Grasper1Visual">
         <pose>-0.1163 0 -0.485 1.5708 -1.5708 0</pose>
         <geometry>
@@ -236,6 +299,14 @@
         </geometry>
       </visual>
 
+      <collision name="Grasper2Visual">
+        <pose>0.1163 0 -0.485 -1.5708 -1.5708 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://zortrax/meshes/Grasper/Grasper2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
       <visual name="Grasper2Visual">
         <pose>0.1163 0 -0.485 -1.5708 -1.5708 0</pose>
         <geometry>
@@ -246,5 +317,97 @@
       </visual>
     </link>
 
+<!--===================== Joints ===================== -->
+    <!-- joint 1 - Support/Base -->
+    <joint type="revolute" name="first">
+      <pose>0 0 1.14 0 0 0</pose>
+      <parent>Support</parent>
+      <child>Base</child>
+
+      <!-- The axis defines the joint's degree of freedom -->
+      <axis>
+        <!-- Revolve around the z-axis -->
+        <xyz>0 0 1</xyz>
+        <!-- Limit refers to the range of motion of the joint -->
+        <!-- Use a very large number to indicate a continuous revolution -->
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- joint 2 - Base/ Lower Arm -->
+    <joint type="revolute" name="second">
+      <pose>0 0 -0.14 0 0 0</pose>
+      <parent>Base</parent>
+      <child>LowerArm</child>
+
+      <!-- The axis defines the joint's degree of freedom -->
+      <axis>
+        <!-- Revolve around the Y-axis -->
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-1.5708</lower>
+          <upper>1.5708</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- joint 3 - Lower Arm/ Upper Arm  -->
+    <joint type="revolute" name="third">
+      <pose>-0.103 0 -0.035 0 0 0</pose>
+      <parent>LowerArm</parent>
+      <child>UpperArm</child>
+
+      <!-- The axis defines the joint's degree of freedom -->
+      <axis>
+        <!-- Revolve around the Y-axis -->
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-0.5708</lower>
+          <upper>0.5708</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- joint 4 - Upper Arm/Grasper Holder  -->
+    <joint type="revolute" name="fourth">
+      <pose>0 0 0.09 0 0 0</pose>
+      <parent>UpperArm</parent>
+      <child>GrasperHolder</child>
+
+      <!-- The axis defines the joint's degree of freedom -->
+      <axis>
+        <!-- Revolve around the Y-axis -->
+        <xyz>0 1 0</xyz>
+        <!-- Limit refers to the range of motion of the joint -->
+        <!-- 1.5708 radius = 90º -->
+        <limit>
+          <lower>-0.5708</lower>
+          <upper>0.5708</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <!-- joint 5 - Grasper Holder/Grasper  -->
+    <joint type="revolute" name="fifth">
+      <pose>0 0 0 0 0 0</pose>
+      <parent>GrasperHolder</parent>
+      <child>Grasper</child>
+
+      <!-- The axis defines the joint's degree of freedom -->
+      <axis>
+        <!-- Revolve around the Y-axis -->
+        <xyz>0 1 0</xyz>
+        <!-- Limit refers to the range of motion of the joint -->
+        <!-- 1.5708 radius = 90º -->
+        <limit>
+          <lower>-0.5708</lower>
+          <upper>0.5708</upper>
+        </limit>
+      </axis>
+    </joint>
+    
   </model>
 </sdf>
