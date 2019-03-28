@@ -399,12 +399,12 @@
       <!-- The axis defines the joint's degree of freedom -->
       <axis>
         <!-- Revolve around the Y-axis -->
-        <xyz>0 1 0</xyz>
+        <xyz>0 0 1</xyz>
         <!-- Limit refers to the range of motion of the joint -->
         <!-- 1.5708 radius = 90º -->
         <limit>
-          <lower>-0.5708</lower>
-          <upper>0.5708</upper>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
         </limit>
       </axis>
     </joint>
