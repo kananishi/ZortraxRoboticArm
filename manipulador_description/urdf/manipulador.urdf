@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<robot name="manipulador">
+
+<!--===================== LINKS =====================-->
+  <link name="floor">
+  </link>
+  <!-- Support - 1 parte -->
+  <link name="Support">
+    <origin rpy="0 0 0" xyz="0 0 0.54" />
+    <inertial>
+      <!-- Volume:  4.9678384375e-01 -->
+      <mass value="1.0"/>
+
+      <!-- Center of mass:  7.1726190000e-02  8.3274000000e-04  1.3966684000e-01 -->
+      <origin xyz="7.1726190000e-02  8.3274000000e-04  1.3966684000e-01" rpy="0 0 0"/>
+
+      <!-- Inertia matrix -->
+      <inertia
+        ixx="4.2189241908e-01"
+        ixy="5.9379537743e-04"
+        ixz="6.7296383368e-03" 
+        iyy="3.8385869267e-01"
+        iyz="2.9011387812e-04" 
+        izz="5.6774468564e-01" 
+      />
+    </inertial>
+    <visual name="support">
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Support/Support.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Support/Support.stl"/>
+      </geometry>
+    </collision>
+
+    <visual name="ring">
+      <origin xyz="0.00014 -0.002 0.59" rpy="0 0 -0.004"/>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Base/Ring.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.00014 -0.002 0.59" rpy="0 0 -0.004"/>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Base/Ring.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Base - 2 parte -->
+  <link name="Base">
+    <origin xyz="0 0 1.13" rpy="0 0 0"/>
+    <inertial>
+      <!-- Volume:  5.1779593750e-01 -->
+      <mass value="1.0"/>
+
+      <!-- Center of mass:  1.0734090000e-02 -3.1306260000e-02 -2.0209423000e-01 -->
+      <origin xyz="1.0734090000e-02 -3.1306260000e-02 -2.0209423000e-01" rpy="0 0 0"/>
+      <inertia ixx="2.4985402980e-01"
+        ixy= "2.8065590994e-03"
+        ixz="-1.9526662277e-02"
+        iyy="2.0700495202e-01" 
+        iyz="2.6764250154e-04"
+        izz="1.9692468754e-01"/>
+    </inertial>
+    <visual name="toothedRing">
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Base/ToothedRing.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Base/ToothedRing.stl"/>
+      </geometry>
+    </collision>
+
+    <visual name="base">
+      <origin xyz="0 0 0.63" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Base/Base.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.63" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Base/Base.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Lower Arm - 3 parte -->
+  <link name="LowerArm">
+    <origin xyz="0.117 -0.015 2.15" rpy="0 0 0"/>
+    <inertial>
+      <!-- Volume:  7.2606862500e-01 -->
+      <mass value="1.0"/>
+
+     <!-- Center of mass: -2.9281710000e-02 -1.9001520000e-02  4.2914791000e-01 -->
+      <origin xyz="-2.9281710000e-02 -1.9001520000e-02  4.2914791000e-01" rpy="0 0 0"/>
+      <inertia 
+        ixx="2.0930545622e-01"
+        ixy="-2.3801660277e-04"
+        ixz="2.1646688011e-03"
+        iyy="1.9833343770e-01" 
+        iyz="1.4079684100e-04"
+        izz="5.1472661830e-02"/>
+    </inertial>
+
+    <visual name="Arm1">
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/LowerArm/Arm1Lower.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/LowerArm/Arm1Lower.stl"/>
+      </geometry>
+    </collision>
+    
+    <visual name="pino">
+      <origin xyz="0.005 0 -0.135" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <cylinder length="0.8" radius="0.04"/>
+      </geometry>
+    </visual>
+    <collision name="pino">
+      <origin xyz="0.005 0 -0.135" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <cylinder length="0.8" radius="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Upper Arm - 4 parte -->
+  <link name="UpperArm">
+    <origin xyz="0.22 0.001 3.63" rpy="0 0 0"/>
+    <inertial>
+      <!-- Volume:  6.3770118750e-01 -->
+      <mass value="0.2"/>
+
+     <!-- Center of mass:  5.4617455000e-01  4.7914700000e-03  7.7464810000e-02 -->
+      <origin xyz="5.4617455000e-01  4.7914700000e-03  7.7464810000e-02" rpy="0 0 0"/>
+      <inertia 
+        ixx="3.0737638857e-02"
+        ixy="-5.9791790806e-03"
+        ixz="-1.8271795362e-02"
+        iyy="2.0499584345e-01" 
+        iyz="-8.6160095162e-04"
+        izz="2.0368961160e-01"/>
+    </inertial>
+      
+    <visual name="upperArm">
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/UpperArm/UpperArm.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/UpperArm/UpperArm.stl"/>
+      </geometry>
+    </collision>
+
+    <visual name="pinoUpper">
+      <origin xyz="-0.103 0 -0.035" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <cylinder length="0.7" radius="0.04"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.103 0 -0.035" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <cylinder length="0.7" radius="0.04"/>
+      </geometry>
+    </collision>
+  </link>
+    
+  <!-- GrasperHolder - 5 parte -->
+  <link name="GrasperHolder">
+    <origin xyz="1.943 0 3.675" rpy="0 0 0"/>
+    <inertial>
+      <!-- Volume:  4.6362562500e-02 -->
+      <mass value="0.1"/>
+
+      <!-- Center of mass: -3.0875000000e-04  8.1761400000e-03  2.6252960000e-02 -->
+      <origin xyz="-3.0875000000e-04  8.1761400000e-03  2.6252960000e-02" rpy="0 0 0"/>
+      <inertia 
+        ixx="5.9870685534e-03"
+        ixy="9.5459665061e-06"
+        ixz="-1.1134579051e-05"
+        iyy="5.9527261894e-03" 
+        iyz="-2.7627261220e-04"
+        izz="3.5809690200e-03"/>
+    </inertial>
+      
+    <visual name="grasperHolder">
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/GrasperHolder/GrasperHolder.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/GrasperHolder/GrasperHolder.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Grasper - 6 parte -->
+  <link name="Grasper">
+    <origin xyz="1.943 -0.0088 3.2" rpy="0 0 0"/>
+    <inertial>
+      <!-- Volume:  5.9164203125e-02 -->
+      <mass value="0.1"/>
+
+      <!-- Center of mass:  3.3870000000e-04  4.5093000000e-04 -2.3830086000e-01 -->
+      <origin xyz="3.3870000000e-04  4.5093000000e-04 -2.3830086000e-01" rpy="0 0 0"/>
+      <inertia 
+        ixx="1.0964352864e-02"
+        ixy="2.3511915923e-06"
+        ixz="1.0524369545e-05"
+        iyy="1.2156277648e-02" 
+        iyz="1.0870709670e-05"
+        izz="1.9657217347e-03"/>
+    </inertial>
+      
+    <visual name="grasperBody">
+      <geometry>
+        <mesh filename="package://manipulador_description/Grasper/GrasperBody.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="package://manipulador_description/Grasper/GrasperBody.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+<!--===================== Joints ===================== -->
+  <!-- joint 1 - Support/Base -->
+  <joint name="first" type="revolute">
+    <origin xyz="0 0 1.14" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="Support"/>
+    <child link="Base"/>
+    <limit effort="50000" lower="-3.14159" upper="3.14159" velocity="10000"/>
+    <dynamics damping="0.7" friction="0.0"/>
+  </joint>
+
+  <!-- joint 2 - Base/ Lower Arm -->
+  <joint name="second" type="revolute">
+    <origin xyz="0 0 -0.14" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="Base"/>
+    <child link="LowerArm"/>
+    <limit effort="50000" lower="-1.5708" upper="1.5708" velocity="10000"/>
+    <dynamics damping="0.7" friction="0.0"/>
+  </joint>
+
+  <!-- joint 3 - Lower Arm/ Upper Arm  -->
+  <joint name="third" type="revolute">
+    <origin xyz="-0.103 0 -0.035" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="LowerArm"/>
+    <child link="UpperArm"/>
+    <limit effort="50000" lower="-1.5708" upper="0" velocity="10000"/>
+    <dynamics damping="0.7" friction="0.0"/>
+  </joint>
+
+  <!-- joint 4 - Upper Arm/Grasper Holder  -->
+  <joint name="fourth" type="revolute">
+    <origin xyz="0 0 0.09" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <parent link="UpperArm"/>
+    <child link="GrasperHolder"/>
+    <limit effort="50000" lower="-1.5708" upper="0" velocity="10000"/>
+    <dynamics damping="0.7" friction="0.0"/>
+  </joint>
+  
+  <!-- joint 5 - Grasper Holder/Grasper  -->
+  <joint name="fifth" type="revolute">
+    <origin xyz="0 0 0.09" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <parent link="GrasperHolder"/>
+    <child link="Grasper"/>
+    <limit effort="50000" lower="-1.5708" upper="1.5708" velocity="10000"/>
+    <dynamics damping="0.7" friction="0.0"/>
+  </joint>
+
+  <!-- support fixed on floor  -->
+  <joint name="floor" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="floor"/>
+    <child link="Support"/>
+  </joint>
+
+</robot>
