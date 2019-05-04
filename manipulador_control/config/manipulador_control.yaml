@@ -1,0 +1,29 @@
+manipulador:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+  
+
+  # Effort Controllers ---------------------------------------
+  support_controller_first:
+    type: effort_controllers/JointEffortController
+    joint: first
+    #pid: {p: 100.0, i: 0.1, d: 10.0}
+
+  base_controller_second:
+    type: effort_controllers/JointEffortController
+    joint: second
+    #pid: {p: 100.0, i: 0.1, d: 10.0}
+
+  third:
+    type: effort_controllers/JointEffortController
+    joint: third
+
+  fourth:
+    type: effort_controllers/JointEffortController
+    joint: fourth
+
+  fifth:
+    type: effort_controllers/JointEffortController
+    joint: fifth
