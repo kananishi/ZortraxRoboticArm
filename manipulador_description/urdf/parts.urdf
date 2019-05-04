@@ -299,9 +299,9 @@
   <transmission name="first_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="first">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
     </joint>
-    <actuator name="$first_motor">
+    <actuator name="$support_base_motor">
       <mechanicalReduction>1</mechanicalReduction>
     </actuator> 
   </transmission>
@@ -310,7 +310,7 @@
   <transmission name="second_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="second">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="base_lowerArm_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -321,7 +321,7 @@
   <transmission name="third_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="third">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="$LowerArm_UpperArm_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -332,7 +332,7 @@
   <transmission name="fourth_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="fourth">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="$UpperArm_GrasperHolder_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -343,7 +343,7 @@
   <transmission name="fifth_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="fifth">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
     </joint>
     <actuator name="$GrasperHolder_Grasper_motor">
       <mechanicalReduction>1</mechanicalReduction>
