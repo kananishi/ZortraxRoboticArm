@@ -8,7 +8,7 @@ project(manipulador_gazebo)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
+  gazebo_ros
 )
 
 ## System dependencies are found with CMake's conventions
@@ -103,7 +103,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES manipulador_gazebo
-#  CATKIN_DEPENDS roscpp
+#  CATKIN_DEPENDS gazebo_ros
 #  DEPENDS system_lib
 )
 

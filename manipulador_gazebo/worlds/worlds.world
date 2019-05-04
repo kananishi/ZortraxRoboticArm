@@ -7,9 +7,5 @@
     <include>
       <uri>model://sun</uri>
     </include>
-    <include>
-      <uri>model://zortrax</uri>
-      <name>manipulador</name>
-    </include>
   </world>
 </sdf>
