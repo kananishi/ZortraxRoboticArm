@@ -112,7 +112,7 @@
         izz="5.1472661830e-02"/>
     </inertial>
     <visual name="Arm1">
-      <origin xyz="0 0 0.15" rpy="0 0 0"/>
+      <origin xyz="0 -0.015 0.15" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/LowerArm/LowerArm.stl"/>
       </geometry>
@@ -155,7 +155,7 @@
         izz="2.0368961160e-01"/>
     </inertial>  
     <visual name="upperArm">
-      <origin xyz="0.103 0 0.035" rpy="0 0 0"/>
+      <origin xyz="0.103 0.01 0.035" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/UpperArm/UpperArm.stl"/>
       </geometry>
@@ -167,7 +167,7 @@
     </collision>
 
     <visual name="pinoUpper">
-      <origin xyz="0 0 0" rpy="1.5708 1.5708 0"/>
+      <origin xyz="0 0.015 0" rpy="1.5708 1.5708 0"/>
       <geometry>
         <cylinder length="0.7" radius="0.04"/>
       </geometry>
@@ -197,7 +197,7 @@
         izz="3.5809690200e-03"/>
     </inertial>
     <visual name="grasperHolder">
-      <origin xyz="0.004 0 -0.087" rpy="0 0 0"/>
+      <origin xyz="0.004 0.001 -0.087" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/GrasperHolder/GrasperHolder.stl"/>
       </geometry>
@@ -227,7 +227,7 @@
     </inertial>  
 
     <visual name="grasperBody">
-      <origin xyz="0 0 -0.2" rpy="0 0 0"/>
+      <origin xyz="0 0.001 -0.2" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/Grasper/GrasperBody.stl"/>
       </geometry>
@@ -235,6 +235,32 @@
     <collision>
       <geometry>
         <mesh filename="package://manipulador_description/Grasper/GrasperBody.stl"/>
+      </geometry>
+    </collision>
+
+    <visual name="grasper1">
+      <origin xyz="-0.1163 0 -0.685" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Grasper/Grasper1.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="-0.1163 0 -0.685" rpy="1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Grasper/Grasper1.stl"/>
+      </geometry>
+    </collision>
+
+    <visual name="grasper2">
+      <origin xyz="0.1163 0 -0.685" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Grasper/Grasper2.stl"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.1163 0 -0.685" rpy="-1.5708 -1.5708 0"/>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Grasper/Grasper2.stl"/>
       </geometry>
     </collision>
   </link>
@@ -256,7 +282,7 @@
 
   <!-- joint 2 - Base/ Lower Arm -->
   <joint name="second" type="revolute">
-    <origin xyz="0.116 -0.015 0.85" rpy="0 0 0"/>
+    <origin xyz="0.116 0 0.85" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <parent link="Base"/>
     <child link="LowerArm"/>
@@ -266,7 +292,8 @@
 
   <!-- joint 3 - Lower Arm/ Upper Arm  -->
   <joint name="third" type="revolute">
-    <origin xyz="0.001 0.014 1.6" rpy="0 0 0"/>
+    <!--origin xyz="0.001 0.014 1.6" rpy="0 0 0"/-->
+    <origin xyz="0 0 1.6" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <parent link="LowerArm"/>
     <child link="UpperArm"/>
@@ -276,7 +303,7 @@
 
   <!-- joint 4 - Upper Arm/Grasper Holder  -->
   <joint name="fourth" type="revolute">
-    <origin xyz="1.826 -0.001 0.17" rpy="0 0 0"/>
+    <origin xyz="1.826 0 0.17" rpy="0 0 0"/>
     <axis xyz="0 1 0"/>
     <parent link="UpperArm"/>
     <child link="GrasperHolder"/>
@@ -299,7 +326,7 @@
   <transmission name="first_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="first">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="$first_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -310,7 +337,7 @@
   <transmission name="second_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="second">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="base_lowerArm_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -321,7 +348,7 @@
   <transmission name="third_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="third">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="$LowerArm_UpperArm_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -332,7 +359,7 @@
   <transmission name="fourth_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="fourth">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="$UpperArm_GrasperHolder_motor">
       <mechanicalReduction>1</mechanicalReduction>
@@ -343,7 +370,7 @@
   <transmission name="fifth_transmission">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="fifth">
-      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="$GrasperHolder_Grasper_motor">
       <mechanicalReduction>1</mechanicalReduction>
