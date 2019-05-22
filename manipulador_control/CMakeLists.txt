@@ -7,7 +7,14 @@ project(manipulador_control)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+	roscpp
+	std_msgs
+	actionlib
+	actionlib_msgs
+	#message_generation
+	genmsg
+)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -43,18 +50,21 @@ find_package(catkin REQUIRED)
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
+add_message_files(
+	FILES
+	coordinates.msg
 #   Message1.msg
 #   Message2.msg
-# )
+)
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
+add_service_files(
+	FILES
+	demo.srv
+	ikine.srv
 #   Service1.srv
 #   Service2.srv
-# )
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -64,10 +74,12 @@ find_package(catkin REQUIRED)
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(
+	DEPENDENCIES
+	std_msgs  # Or other packages containing msgs
+	actionlib_msgs
+)
+
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -99,6 +111,7 @@ find_package(catkin REQUIRED)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
+	CATKIN_DEPENDS roscpp message_runtime
 #  INCLUDE_DIRS include
 #  LIBRARIES manipulador_control
 #  CATKIN_DEPENDS other_catkin_pkg
@@ -112,8 +125,9 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
-# ${catkin_INCLUDE_DIRS}
+  include
+  ${catkin_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -145,6 +159,7 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
 
 #############
 ## Install ##
@@ -193,3 +208,27 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+# Build service cliente and server
+add_executable(demo_server src/demo_server.cpp)
+target_link_libraries(demo_server ${catkin_LIBRARIES})
+add_dependencies(demo_server manipulador_control_gencpp)
+
+add_executable(demo_client src/demo_client.cpp)
+target_link_libraries(demo_client ${catkin_LIBRARIES})
+add_dependencies(demo_client manipulador_control_gencpp)
+
+add_executable(joint_position_control src/joint_position_control.cpp)
+add_dependencies(joint_position_control manipulador_control_joint_position_cpp)
+target_link_libraries(joint_position_control ${catkin_LIBRARIES})
+
+add_executable(control_client src/control_client.cpp)
+target_link_libraries(control_client ${catkin_LIBRARIES})
+add_dependencies(control_client manipulador_control_gencpp)
+
+add_executable(control_server src/control_server.cpp)
+target_link_libraries(control_server ${catkin_LIBRARIES})
+add_dependencies(control_server manipulador_control_gencpp)
+
+
+
