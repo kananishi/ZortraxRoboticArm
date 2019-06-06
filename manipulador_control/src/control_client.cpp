@@ -12,7 +12,7 @@ void input(manipulador_control::ikine *srv){
 	std::cout << "x = ";
 	std::getline(std::cin,input); // message
 	srv->request.x = stof(input);
-
+/*
 	std::cout << "y = ";
 	std::getline(std::cin,input); // message
 	srv->request.y = stof(input);
@@ -20,7 +20,7 @@ void input(manipulador_control::ikine *srv){
 	std::cout << "z = ";
 	std::getline(std::cin,input); // message
 	srv->request.z = stof(input);
-	
+*/	
 }
 
 int main(int argc, char **argv){
@@ -39,7 +39,7 @@ int main(int argc, char **argv){
 	ros::ServiceClient client = n.serviceClient<manipulador_control::ikine>("jointControl");
 
 	manipulador_control::ikine srv;
-	ros::Rate loop_rate(10); 
+	ros::Rate loop_rate(100); 
 	
 	while(ros::ok()){
 		input(&srv);
@@ -58,7 +58,6 @@ int main(int argc, char **argv){
 			fourthJoint.publish(th4);
 			fifthJoint.publish(th5);
 			
-			
 		}
 
 		else{
@@ -69,7 +68,8 @@ int main(int argc, char **argv){
 		ros::spinOnce();
 		loop_rate.sleep(); // sleep to get a 10 Hz frequency
 
-		return 0;
 	}
+
+	return 0;
 
 }

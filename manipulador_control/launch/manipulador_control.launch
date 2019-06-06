@@ -9,7 +9,11 @@
     type="spawner" respawn="false"
     output="screen" ns="/manipulador"
     args="joint_state_controller
-      support_controller_first"/>
+      first_controller
+      second_controller
+      third_controller
+      fourth_controller
+      fifth_controller"/>
 
 
   <!-- convert joint states to TF transforms for rviz, etc -->

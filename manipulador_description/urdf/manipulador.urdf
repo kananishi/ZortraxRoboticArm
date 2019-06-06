@@ -2,7 +2,7 @@
 <robot name="manipulador">
 
 <!--===================== LINKS =====================-->
-  <link name = "floor">
+  <link name = "world">
   </link>
   <!-- Support - 1 parte -->
   <link name="Support">
@@ -118,7 +118,7 @@
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0.15" rpy="0 0 0"/>
+      <origin xyz="0 -0.015 0.15" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/LowerArm/LowerArm.stl"/>
       </geometry>
@@ -130,11 +130,12 @@
         <cylinder length="0.8" radius="0.04"/>
       </geometry>
     </visual>
-    <collision name="pino">
+     <collision>
+      <origin xyz="0.005 0 0" rpy="1.5708 1.5708 0"/>
       <geometry>
         <cylinder length="0.8" radius="0.04"/>
       </geometry>
-    </collision>
+    </collision>>
   </link>
 
   <!-- Upper Arm - 4 parte -->
@@ -161,6 +162,7 @@
       </geometry>
     </visual>
     <collision>
+      <origin xyz="0.103 0.01 0.035" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/UpperArm/UpperArm.stl"/>
       </geometry>
@@ -173,7 +175,7 @@
       </geometry>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="1.5708 1.5708 0"/>
+      <origin xyz="0 0.015 0" rpy="1.5708 1.5708 0"/>
       <geometry>
         <cylinder length="0.7" radius="0.04"/>
       </geometry>
@@ -203,6 +205,7 @@
       </geometry>
     </visual>
     <collision>
+      <origin xyz="0.004 0.001 -0.087" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/GrasperHolder/GrasperHolder.stl"/>
       </geometry>
@@ -227,49 +230,20 @@
     </inertial>  
 
     <visual name="grasperBody">
-      <origin xyz="0 0.001 -0.2" rpy="0 0 0"/>
+      <origin xyz="0 0.001 -0.21" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/Grasper/GrasperBody.stl"/>
       </geometry>
     </visual>
-    <collision>
-      <geometry>
-        <mesh filename="package://manipulador_description/Grasper/GrasperBody.stl"/>
-      </geometry>
-    </collision>
-
-    <visual name="grasper1">
-      <origin xyz="-0.1163 0 -0.685" rpy="1.5708 -1.5708 0"/>
-      <geometry>
-        <mesh filename="package://manipulador_description/meshes/Grasper/Grasper1.stl"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin xyz="-0.1163 0 -0.685" rpy="1.5708 -1.5708 0"/>
-      <geometry>
-        <mesh filename="package://manipulador_description/meshes/Grasper/Grasper1.stl"/>
-      </geometry>
-    </collision>
-
-    <visual name="grasper2">
-      <origin xyz="0.1163 0 -0.685" rpy="-1.5708 -1.5708 0"/>
-      <geometry>
-        <mesh filename="package://manipulador_description/meshes/Grasper/Grasper2.stl"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin xyz="0.1163 0 -0.685" rpy="-1.5708 -1.5708 0"/>
-      <geometry>
-        <mesh filename="package://manipulador_description/meshes/Grasper/Grasper2.stl"/>
-      </geometry>
-    </collision>
   </link>
 
 <!--===================== Joints ===================== -->
-  <joint name="base" type="fixed">
-    <parent link="floor"/>
-    <child link="Support"/>
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link = "Support" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
   </joint>
+
   <!-- joint 1 - Support/Base -->
   <joint name="first" type="revolute">
     <origin xyz="0 0 1.15" rpy="0 0 0"/>

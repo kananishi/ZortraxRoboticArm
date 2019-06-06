@@ -3,7 +3,7 @@
 
 bool ikine(manipulador_control::ikine::Request &req,
 	       	manipulador_control::ikine::Response &res){
-	if(req.x == 0 && req.y == 0 && req.z == 0){
+	if(req.x == 0){
 		res.th1 = 0;
 		res.th2 = 0;
 		res.th3 = 0;
@@ -12,9 +12,28 @@ bool ikine(manipulador_control::ikine::Request &req,
 	
 		ROS_INFO("Reset");
 	}
-	else{
-		res.th1 = -1;
+	if(req.x == 1){
+		res.th1 = 0;
+		res.th2 = 1.3;
+		res.th3 = -0.5;
+		res.th4 = -1;
+		res.th5 = 0;
 	}
+	if(req.x == 2){
+		res.th1 = 3.15;
+		res.th2 = 0.5;
+		res.th3 = -0.5;
+		res.th4 = 0;
+		res.th5 = 0;
+	}
+	if(req.x == 3){
+		res.th1 = 3.15;
+		res.th2 = 1.3;
+		res.th3 = -0.5;
+		res.th4 = -1;
+		res.th5 = 0;
+	}
+	
 	ROS_INFO("First: %f", res.th1);
 	return true;
 }
