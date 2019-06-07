@@ -21,7 +21,6 @@
 	<!-- model -->
 	<arg name="model" default="$(find manipulador_description)/urdf/manipulador.xacro"/>
 
-
 	<!-- bot spawn -->
 	<param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
 
@@ -34,19 +33,7 @@
 	</node>
 
 	<!-- bot control launch file -->
-	<rosparam command="load"
-		file="$(find manipulador_control)/config/joints.yaml"
-	/>
-
-	<node name="controller_spawner" pkg="controller_manager" type="spawner"
-		ns="/manipulador"
-		args="first_controller 
-			second_controller
-			third_controller
-			fourth_controller
-			fifth_controller
-			joint_state_controller"
-	/>
+	<include file="$(find manipulador_control)/launch/manipulador_control.launch"/>
 	
 
 </launch>

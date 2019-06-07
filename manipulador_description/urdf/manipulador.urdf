@@ -230,7 +230,7 @@
     </inertial>  
 
     <visual name="grasperBody">
-      <origin xyz="0 0.001 -0.21" rpy="0 0 0"/>
+      <origin xyz="0.004 -0.0075 -0.2" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/Grasper/GrasperBody.stl"/>
       </geometry>
