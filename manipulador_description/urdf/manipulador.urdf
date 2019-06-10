@@ -228,13 +228,32 @@
         iyz="1.0870709670e-05"
         izz="1.9657217347e-03"/>
     </inertial>  
-
+    <!--
     <visual name="grasperBody">
       <origin xyz="0.004 -0.0075 -0.2" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/Grasper/GrasperBody.stl"/>
       </geometry>
     </visual>
+    <collision>
+      <origin xyz="0.004 -0.0075 -0.2" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://manipulador_description/meshes/Grasper/GrasperBody.stl"/>
+      </geometry>
+    </collision>
+    -->
+    <visual name="ptest">
+      <origin xyz="0 0.015 0" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <cylinder length="0.7" radius="0.04"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0.015 0" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <cylinder length="0.7" radius="0.04"/>
+      </geometry>
+    </collision>
   </link>
 
 <!--===================== Joints ===================== -->
@@ -287,11 +306,11 @@
 
   <!-- joint 5 - Grasper Holder/Grasper  -->
   <joint name="fifth" type="revolute">
-    <origin xyz="0 0 -0.37" rpy="0 0 0"/>
+    <origin xyz="0 0 -0.6" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
     <parent link="GrasperHolder"/>
     <child link="Grasper"/>
-    <limit effort="50" lower="-1.5708" upper="1.5708" velocity="1"/>
+    <limit effort="50" lower="-1.5708" upper="0" velocity="1"/>
     <dynamics damping="0.7" friction="0.0"/>
   </joint>
 
