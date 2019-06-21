@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
 	actionlib_msgs
 	#message_generation
 	genmsg
+	control_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -78,6 +79,7 @@ generate_messages(
 	DEPENDENCIES
 	std_msgs  # Or other packages containing msgs
 	actionlib_msgs
+	control_msgs
 )
 
 
@@ -229,6 +231,10 @@ add_dependencies(control_client manipulador_control_gencpp)
 add_executable(control_server src/control_server.cpp)
 target_link_libraries(control_server ${catkin_LIBRARIES})
 add_dependencies(control_server manipulador_control_gencpp)
+
+add_executable(dance src/dance.cpp)
+target_link_libraries(dance ${catkin_LIBRARIES})
+add_dependencies(dance manipulador_control_dance_gencpp)
 
 
 

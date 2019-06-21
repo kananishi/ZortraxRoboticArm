@@ -9,19 +9,19 @@
     <!--origin rpy="0 0 0" xyz="0 0 0.54" /-->
     <inertial>
       <!-- Volume:  4.9678384375e-01 -->
-      <mass value="1.0"/>
+      <mass value="0.73"/>
 
       <!-- Center of mass:  7.1726190000e-02  8.3274000000e-04  1.3966684000e-01 -->
       <origin xyz="7.1726190000e-02  8.3274000000e-04  1.3966684000e-01" rpy="0 0 0"/>
 
       <!-- Inertia matrix -->
       <inertia
-        ixx="4.2189241908e-01"
-        ixy="5.9379537743e-04"
-        ixz="6.7296383368e-03" 
-        iyy="3.8385869267e-01"
-        iyz="2.9011387812e-04" 
-        izz="5.6774468564e-01" 
+        ixx="-0.02"
+        ixy="1.0"
+        ixz="0" 
+        iyy="-0.02"
+        iyz="0.05" 
+        izz="1.0" 
       />
     </inertial>
     <visual name="Support">
@@ -55,16 +55,16 @@
   <link name="Base">
     <inertial>
       <!-- Volume:  5.1779593750e-01 -->
-      <mass value="1.0"/>
+      <mass value="0.791"/>
 
       <!-- Center of mass:  1.0734090000e-02 -3.1306260000e-02 -2.0209423000e-01 -->
       <origin xyz="1.0734090000e-02 -3.1306260000e-02 -2.0209423000e-01" rpy="0 0 0"/>
-      <inertia ixx="2.4985402980e-01"
-        ixy= "2.8065590994e-03"
-        ixz="-1.9526662277e-02"
-        iyy="2.0700495202e-01" 
-        iyz="2.6764250154e-04"
-        izz="1.9692468754e-01"/>
+      <inertia ixx="0.29"
+        ixy= "-0.14"
+        ixz="0.95"
+        iyy="-0.99" 
+        iyz="-0.14"
+        izz="-0.29"/>
     </inertial>
 
     <visual name="toothedRing">
@@ -80,7 +80,7 @@
       </geometry>
     </collision>
 
-    <visual name="base">
+    <visual name="Base">
       <origin xyz="0 0 0.63" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/Base/Base.stl"/>
@@ -99,7 +99,7 @@
     <!--origin xyz="0.117 -0.015 2.15" rpy="0 0 0"/-->
     <inertial>
       <!-- Volume:  7.2606862500e-01 -->
-      <mass value="1.0"/>
+      <mass value="0.464"/>
 
      <!-- Center of mass: -2.9281710000e-02 -1.9001520000e-02  4.2914791000e-01 -->
       <origin xyz="-2.9281710000e-02 -1.9001520000e-02  4.2914791000e-01" rpy="0 0 0"/>
@@ -111,7 +111,7 @@
         iyz="1.4079684100e-04"
         izz="5.1472661830e-02"/>
     </inertial>
-    <visual name="Arm1">
+    <visual name="LowerArm">
       <origin xyz="0 -0.015 0.15" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/LowerArm/LowerArm.stl"/>
@@ -143,7 +143,7 @@
     <!--origin xyz="0.22 0.001 3.63" rpy="0 0 0"/-->  
     <inertial>
       <!-- Volume:  6.3770118750e-01 -->
-      <mass value="0.2"/>
+      <mass value="0.407"/>
 
      <!-- Center of mass:  5.4617455000e-01  4.7914700000e-03  7.7464810000e-02 -->
       <origin xyz="5.4617455000e-01  4.7914700000e-03  7.7464810000e-02" rpy="0 0 0"/>
@@ -155,7 +155,7 @@
         iyz="-8.6160095162e-04"
         izz="2.0368961160e-01"/>
     </inertial>  
-    <visual name="upperArm">
+    <visual name="UpperArm">
       <origin xyz="0.103 0.01 0.035" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/UpperArm/UpperArm.stl"/>
@@ -186,7 +186,7 @@
   <link name="GrasperHolder">
     <inertial>
       <!-- Volume:  4.6362562500e-02 -->
-      <mass value="0.1"/>
+      <mass value="0.068"/>
 
       <!-- Center of mass: -3.0875000000e-04  8.1761400000e-03  2.6252960000e-02 -->
       <origin xyz="-3.0875000000e-04  8.1761400000e-03  2.6252960000e-02" rpy="0 0 0"/>
@@ -198,7 +198,7 @@
         iyz="-2.7627261220e-04"
         izz="3.5809690200e-03"/>
     </inertial>
-    <visual name="grasperHolder">
+    <visual name="GrasperHolder">
       <origin xyz="0.004 0.001 -0.087" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/GrasperHolder/GrasperHolder.stl"/>
@@ -216,7 +216,7 @@
   <link name="Grasper">
     <inertial>
       <!-- Volume:  5.9164203125e-02 -->
-      <mass value="0.1"/>
+      <mass value="0.03"/>
 
       <!-- Center of mass:  3.3870000000e-04  4.5093000000e-04 -2.3830086000e-01 -->
       <origin xyz="3.3870000000e-04  4.5093000000e-04 -2.3830086000e-01" rpy="0 0 0"/>
@@ -228,8 +228,8 @@
         iyz="1.0870709670e-05"
         izz="1.9657217347e-03"/>
     </inertial>  
-    <!--
-    <visual name="grasperBody">
+
+    <visual name="Grasper">
       <origin xyz="0.004 -0.0075 -0.2" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/Grasper/GrasperBody.stl"/>
@@ -239,19 +239,6 @@
       <origin xyz="0.004 -0.0075 -0.2" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://manipulador_description/meshes/Grasper/GrasperBody.stl"/>
-      </geometry>
-    </collision>
-    -->
-    <visual name="ptest">
-      <origin xyz="0 0.015 0" rpy="1.5708 1.5708 0"/>
-      <geometry>
-        <cylinder length="0.7" radius="0.04"/>
-      </geometry>
-    </visual>
-    <collision>
-      <origin xyz="0 0.015 0" rpy="1.5708 1.5708 0"/>
-      <geometry>
-        <cylinder length="0.7" radius="0.04"/>
       </geometry>
     </collision>
   </link>
@@ -306,7 +293,7 @@
 
   <!-- joint 5 - Grasper Holder/Grasper  -->
   <joint name="fifth" type="revolute">
-    <origin xyz="0 0 -0.6" rpy="0 0 0"/>
+    <origin xyz="0 0 -0.37" rpy="0 0 0"/>
     <axis xyz="0 0 1"/>
     <parent link="GrasperHolder"/>
     <child link="Grasper"/>
@@ -376,6 +363,29 @@
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
       <robotNamespace>/manipulador</robotNamespace>
     </plugin>
+  </gazebo>
+
+<!-- ================== Materials =================== -->
+  <gazebo reference="Support">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="Ring">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+  <gazebo reference="Base">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <gazebo reference="LowerArm">
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <gazebo reference="UpperArm">
+    <material>Gazebo/Yellow</material>
+  </gazebo>
+  <gazebo reference="GrasperHolder">
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <gazebo reference="Grasper">
+    <material>Gazebo/Purple</material>
   </gazebo>
 
 </robot>

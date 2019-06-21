@@ -39,7 +39,7 @@ int main(int argc, char **argv){
 	ros::ServiceClient client = n.serviceClient<manipulador_control::ikine>("jointControl");
 
 	manipulador_control::ikine srv;
-	ros::Rate loop_rate(100); 
+	ros::Rate loop_rate(10); 
 	
 	while(ros::ok()){
 		input(&srv);

@@ -2,4 +2,5 @@
 <robot name="manipulador" xmlns:xacro="http://www.ros.org/wiki/xacro">
 	<!-- Put here the robot description -->
 	<xacro:include filename="$(find manipulador_description)/urdf/manipulador.urdf" />
+	<xacro:include filename="$(find manipulador_description)/urdf/materials.xacro" />
 </robot>
